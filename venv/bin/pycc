@@ -1,0 +1,3 @@
+#!/Users/arc/Desktop/Bots/SRB/venv/bin/python
+from numba.pycc import main
+main()
