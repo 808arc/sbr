@@ -1,8 +1,7 @@
 import time
-
 from youtubesearchpython import VideosSearch
 
-def yts (list1):
+def get_link_search (list1):
     track_info_list = list1
     link_list = []
 

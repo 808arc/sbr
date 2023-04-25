@@ -1,6 +1,9 @@
 from chart import get_song_list
-from searcher import yts
+from searcher import get_link_search
+from downloader import get_link_loader
+
 from datetime import datetime
+
 
 #today_date = datetime.today().strftime('%Y-%m-%d')
 
@@ -8,11 +11,22 @@ dates = ['2023-03-01', '2023-04-01']
 suffix = "x"
 song_list = get_song_list(suffix, dates)
 
-print(len((song_list)))
+#print(len((song_list)))
 
-track_list_search = yts(song_list)
+list_search = get_link_search(song_list)
 
-print(track_list_search)
+link_loader = get_link_loader(list_search)
+
+
+
+#print(track_list_search)
+
+
+
+
+
+
+
 
 #print(today_date)
 
