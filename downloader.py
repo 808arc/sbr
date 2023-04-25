@@ -4,7 +4,7 @@ import time
 from pytube import YouTube
 
 
-destination = '/Users/arc/Desktop/Bots/SlowedReverbBot/Tracks/'
+destination = '/Users/arc/Desktop/Bots/sbr/Tracks/'
 
 for link in link_list:
     try:

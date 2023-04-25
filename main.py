@@ -1,14 +1,18 @@
 from chart import get_song_list
+from searcher import yts
 from datetime import datetime
 
 #today_date = datetime.today().strftime('%Y-%m-%d')
 
-dates = ['2019-11-11', '2023-04-01']
+dates = ['2023-03-01', '2023-04-01']
 suffix = "x"
 song_list = get_song_list(suffix, dates)
 
-#print(len((song_list)))
+print(len((song_list)))
 
+track_list_search = yts(song_list)
+
+print(track_list_search)
 
 #print(today_date)
 
