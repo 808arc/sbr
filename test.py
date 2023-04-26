@@ -1,38 +1,26 @@
+#for test purposes only 
 import billboard
 
-def get_song_list_with_suffix(suffix, dates):
-    """
-    Returns a list of Billboard chart data with a given suffix for the song titles and artist names
-    within a range of dates.
+# create an empty list to store the chart data
+list2 = [] #list of all songs for current date 
 
-    Parameters:
-    suffix (str): The suffix to append to the end of each song title and artist name.
-    dates (list of str): A list of date strings in the format YYYY-MM-DD.
+# get the dates you want to search for
+dates = ['2009-07-07', '2009-09-08']
 
-    Returns:
-    A list of strings representing the song titles and artist names with the given suffix.
-    """
+# retrieve song titles from the Billboard API for each date
+for custom_date in dates:
+    chart = billboard.ChartData('hot-100', date=custom_date)
+    # iterate over the chart data and append each item to list2
+    for song in chart:
+        list2.append(song.title)
 
-    # Create empty lists to store the chart data
-    list2 = []
-    list1 = []
+# remove any duplicate song titles from list2
+list2 = list(set(list2))
 
-    for custom_date in dates:
-        chart = billboard.ChartData('hot-100', date=custom_date)
+# write the unique song titles to song_titles.txt
+with open("song_titles.txt", "w") as f:
+    for title in list2:
+        f.write(title + "\n")
 
-        # Iterate over the chart data and append each item to the list2
-        for song in chart:
-            list2.append(song.title + " - " + song.artist)
-
-    # Append suffix to each item in list2
-    for i in range(len(list2)):
-        list2[i] = str(list2[i]) + suffix
-
-    # Find duplicates in list1
-    for item in list2:
-        if item not in list1:
-            list1.append(item)
-        else:
-            print(f"{item} is duplicating an item in list1")
-
-    return list1
+# print the unique song titles
+print(f"New values in song_titles.txt: {list2}")
