@@ -3,7 +3,7 @@ import librosa
 #from IPython.display import Audio
 import scipy.io
 
-voice, sr=librosa. load ('/tracks/*.mp3')
+voice, sr=librosa. load ('tracks/_crazy bounce 142 bpm prod shadoww x @808 arc.mp3')
 sr 
 #display(Audio(voice, rate=sr))
 

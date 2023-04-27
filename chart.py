@@ -6,7 +6,7 @@ def get_song_list(suffix, dates):
     list2 = [] #list of all songs for current date 
     list1 = [] #list of all origina items or storage
 
-#    dates = ['2009-07-07', '2009-09-08'] #for test
+    dates = ['2009-07-07', '2009-09-08'] #for test
 
     for custom_date in dates:
         chart = billboard.ChartData('hot-100', date=custom_date)
@@ -23,5 +23,5 @@ def get_song_list(suffix, dates):
             list1.append(item)
         else:
             print(f"{item} is duplicating an item in list1")
-#    return list1
+    return list1
 
