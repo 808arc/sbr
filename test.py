@@ -1,26 +1,23 @@
-#for test purposes only 
-import billboard
+import librosa
+import os
+import scipy.io
 
-# create an empty list to store the chart data
-list2 = [] #list of all songs for current date 
+# Get a list of all the MP3 files in the tracks directory
+mp3_files = [file for file in os.listdir('tracks') if file.endswith('.mp3')]
 
-# get the dates you want to search for
-dates = ['2009-07-07', '2009-09-08']
 
-# retrieve song titles from the Billboard API for each date
-for custom_date in dates:
-    chart = billboard.ChartData('hot-100', date=custom_date)
-    # iterate over the chart data and append each item to list2
-    for song in chart:
-        list2.append(song.title)
+# Loop over the MP3 files and load each one with librosa.load()
+for mp3_file in mp3_files:
+    file_path = os.path.join('tracks', mp3_file)
+    voice, sr = librosa.load(file_path)
+    print(f'{mp3_file}: {sr} Hz')
+#    scipy.io.wavfile.write('sbr_tracks/(SLOWED AND REVERB)' + mp3_file[:-4] + '.mp3', rate=15000, data=voice)
 
-# remove any duplicate song titles from list2
-list2 = list(set(list2))
+#voice, sr=librosa. load ('tracks/_crazy bounce 142 bpm prod shadoww x @808 arc.mp3')
+#sr 
 
-# write the unique song titles to song_titles.txt
-with open("song_titles.txt", "w") as f:
-    for title in list2:
-        f.write(title + "\n")
 
-# print the unique song titles
-print(f"New values in song_titles.txt: {list2}")
+
+
+    
+    
